@@ -80,3 +80,8 @@ media.stagefright.enable-meta=true
 media.stagefright.enable-scan=true
 media.stagefright.enable-http=true
 media.stagefright.enable-rtsp=true
+
+#OTA
+otaupdater.otaid=(write your ota id here without spaces or brackets)
+otaupdater.otaver=(write your ota version here without spaces or brackets)
+otaupdater.otatime=(write the date+time here as: 20120820-1516 without spaces or backets)
