@@ -7,10 +7,7 @@ ro.sf.lcd_density=240
 persist.sys.strictmode.visual=0
 ro.secure=0
 
-debug.fb.rgb565=0
-
 com.qc.hardware=true
-com.qc.hdmi_out=false
 
 # Modify MMS APN retry timer from 5s to 2s.
 ro.gsm.2nd_data_retry_config=max_retries=3, 2000, 2000, 2000
@@ -59,9 +56,6 @@ ro.ril.disable.power.collapse=1
 postprocess.iso_midband=400
 postprocess.denoise_level=5
 
-# Recording Audio Workaround
-ro.camera.sound.disabled=1
-
 # USB Mounting
 persist.sys.usb.config=mass_storage,adb
 
@@ -69,6 +63,7 @@ persist.sys.usb.config=mass_storage,adb
 ro.kernel.android.checkjni=0
 
 # Disable Sending Usage Data
+<<<<<<< HEAD
 ro.config.nocheckin=1
 
 # Video Acceleration
@@ -85,3 +80,6 @@ media.stagefright.enable-rtsp=true
 otaupdater.otaid=(write your ota id here without spaces or brackets)
 otaupdater.otaver=(write your ota version here without spaces or brackets)
 otaupdater.otatime=(write the date+time here as: 20120820-1516 without spaces or backets)
+=======
+ro.config.nocheckin=yes
+>>>>>>> 0cc6859be7ac6f221fcb406b73287836d7270424
