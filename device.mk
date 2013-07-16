@@ -17,9 +17,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit common msm7x30 configs
 $(call inherit-product, device/htc/msm7x30-common/msm7x30.mk)
 
-# stuff common to all HTC phones
-#$(call inherit-product, device/htc/common/common.mk)
-
 # HTC Audio
 $(call inherit-product, device/htc/ace/media_a1026.mk)
 $(call inherit-product, device/htc/ace/media_htcaudio.mk)
@@ -105,19 +102,6 @@ PRODUCT_COPY_FILES += \
 	device/htc/ace/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
 	device/htc/ace/idc/elan-touchscreen.idc:system/usr/idc/elan-touchscreen.idc
 
-# Kernel
-ifneq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/htc/ace/prebuilt/kernel/kernel
-
-PRODUCT_COPY_FILES += \
-	$(LOCAL_KERNEL):kernel
-
-# Kernel modules
-PRODUCT_COPY_FILES += \
-	device/htc/ace/prebuilt/kernel/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
-	device/htc/ace/prebuilt/kernel/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko
-endif
-
 # Copy bcm4329 firmware
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
@@ -127,11 +111,9 @@ PRODUCT_COPY_FILES += \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-	make_ext4fs \
-	e2fsck \
-	setup_fs
+	e2fsck
 
-# Build extra non-CM packages
+# Torch
 PRODUCT_PACKAGES += \
 	Torch
 
@@ -167,9 +149,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Set build date
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
-# Fix bad lunch inheritance
-PRODUCT_NAME := cm_ace
-
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -186,3 +165,10 @@ $(call inherit-product, vendor/htc/ace/ace-vendor.mk)
 
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+
+# Discard inherited values and use our own instead.
+PRODUCT_DEVICE := ace
+PRODUCT_NAME := ace
+PRODUCT_BRAND := htc_wwe
+PRODUCT_MODEL := Desire HD
+PRODUCT_MANUFACTURER := HTC
